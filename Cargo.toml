@@ -7,4 +7,4 @@ description = "wait user exit terminal, like Ctrl+C"
 repository = "https://github.com/chen3cn/terminal-wait-exit"
 
 [dependencies]
-tokio = { version = "1.37", features = ["signal", "macros"] }
+tokio = { version = "1.38", features = ["signal", "macros"] }
