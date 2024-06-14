@@ -2,6 +2,10 @@
 wait user exit terminal, like Ctrl+C.
 
 # Usage
+cargo.toml
+```
+terminal-wait-exit = "1.0"
+```
 ```rust
 #[tokio::main]
 async fn main() {
@@ -11,7 +15,7 @@ async fn main() {
         server.serve(service).await;
     });
 
-    if let Err(e) = wait_exit::wait_exit().await {
+    if let Err(e) = terminal-wait-exit::wait_exit().await {
         error!("Listening exit failed.{:?}", e);
     }
 
