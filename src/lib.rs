@@ -2,7 +2,8 @@ use std::io;
 
 #[cfg(windows)]
 pub async fn wait_exit() -> Result<(), io::Error> {
-    use tokio::{select, signal::windows::{ctrl_break, ctrl_c, ctrl_close, ctrl_logoff, ctrl_shutdown}};
+    use tokio::signal::windows::{ctrl_break, ctrl_c, ctrl_close, ctrl_logoff, ctrl_shutdown};
+    use tokio::select;
 
     let mut ctrl_c = match ctrl_c() {
         Ok(c) => c,
@@ -37,6 +38,7 @@ pub async fn wait_exit() -> Result<(), io::Error> {
 #[cfg(unix)]
 pub async fn wait_exit() -> Result<(), io::Error> {
     use tokio::signal::unix::{signal, SignalKind};
+    use tokio::select;
 
     let mut sigint = signal(SignalKind::interrupt())?;
     let mut sigquit = signal(SignalKind::quit())?;
